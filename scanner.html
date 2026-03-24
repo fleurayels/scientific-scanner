@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Scientific Number Scanner</title>
+
+<style>
+body {
+    font-family: Consolas, monospace;
+    background-color: #551452;
+    color: white;
+    margin: 0;
+}
+
+/* ===== MENU BAR ===== */
+.menu {
+    background: #36213c;
+    padding: 10px;
+}
+
+.menu span {
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.menu span:hover {
+    color: rgb(205, 49, 229);
+}
+
+/* ===== CONTAINER ===== */
+.container {
+    padding: 40px;
+    text-align: center;
+}
+
+/* INPUT AREA */
+.run-area {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+input {
+    padding: 10px;
+    font-size: 16px;
+    width: 300px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background: rgb(230, 129, 246);
+    border: none;
+}
+
+/* RESULT BOX */
+.result {
+    margin-top: 30px;
+    font-size: 22px;
+}
+
+/* FOOTER */
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: #333;
+    padding: 10px;
+    text-align: center;
+}
+</style>
+</head>
+
+<body>
+
+<!-- MENU -->
+<div class="menu">
+    <span>File</span>
+    <span>Edit</span>
+    <span onclick="cekAngka()">Run</span>
+    <span onclick="about()">About</span>
+</div>
+
+<div class="container">
+
+    <h2>Scientific Number Scanner</h2>
+
+    <!-- INPUT + RUN -->
+    <div class="run-area">
+        <label>Input :</label>
+        <input type="text" id="inputAngka" placeholder="Masukkan angka ilmiah">
+        <button onclick="cekAngka()">Run</button>
+    </div>
+
+    <!-- RESULT -->
+    <div class="result">
+        Result : <span id="hasil">-</span>
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+    Kelas: Sistem Informasi B | NIM: 241011060039
+</div>
+
+<script>
+function cekAngka() {
+
+    let teks = document.getElementById("inputAngka").value;
+
+    // pola angka ilmiah
+    let pola = /^[+-]?(\d+(\.\d*)?|\.\d+)[eE][+-]?\d+$/;
+
+    if (pola.test(teks)) {
+        document.getElementById("hasil").innerHTML = "YES ✅";
+        document.getElementById("hasil").style.color = "lime";
+    } else {
+        document.getElementById("hasil").innerHTML = "NO ❌";
+        document.getElementById("hasil").style.color = "red";
+    }
+}
+
+function about(){
+    alert("Scientific Number Scanner\nNama: Michelia Sonambela\nKelas: Sistem Informasi B\nNIM: 241011060039");
+}
+</script>
+
+</body>
+</html>
